@@ -9,5 +9,7 @@ streamlit을 사용해 웹 데모로 제작되었습니다.
 
 # 사용법
 
+- host, api_key, api_key_primary_val, request_id를 수정
+
 - streamlit run demo_body.py
 - streamlit run demo_head.py
