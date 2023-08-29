@@ -125,10 +125,10 @@ def make_body_copy_example():
     return example_lst
 
 LKD2completion_executor = LKD2CompletionExecutor(
-        host='host',
-        api_key='api_key',
-        api_key_primary_val = 'api_key_primary_val',
-        request_id='request_id'
+        host='clovastudio.apigw.ntruss.com',
+        api_key='NTA0MjU2MWZlZTcxNDJiY39NiD4ZzukE8hYO+doV6gqaf2GOSDWivVGYCoQzm2nGm3fdq7Kx70Oj0Un/A0bZfVERSl6a8X7tPz74IE9wVcX4H67Bo3Klyzvjy/LDAk0p8dRc+gw0JC9uVIpRSXw0OjlCObEX7Ayv9R7r5FVMz7Cu3GXA5zCV5b3UohSmWkvILqrf2L9uH8VgVxkr3zp7LclyTgOAVRujZ/0WPSLqsKU=',
+        api_key_primary_val = 'lbAIyG9RaW7AEEqE5Rl1ZqJPozLr3jJeXNhS5k1b',
+        request_id='fa49d3a5891245b3a29e01bc8d1d9651'
     )
 
 example = ""
@@ -157,6 +157,7 @@ with st.form("body_copy"):
     name = st.text_input(label="상품", placeholder = "ex) 썬크림")
     key = st.text_input(label="주요 키워드", placeholder = "ex) 끈적이지 않는, 1+1")
     ToneManner = st.selectbox("톤앤매너", ["기본", "리뷰", "행동촉구"])
+    iter_num = st.selectbox("생성할 결과 갯수를 입력해주세요", [1, 2, 3])
     
     if st.form_submit_button(label='Submit'):
         command = f"상품, 주요 키워드가 포함된 {ToneManner} 마케팅 메시지를 생성합니다."
@@ -164,8 +165,9 @@ with st.form("body_copy"):
         
         request_data['text'] = final_text
         
-        LKD2response_text = LKD2completion_executor.execute(request_data)
-        
-        output = LKD2response_text.replace(final_text, "").replace("상품", "")
-        
-        st.write(output)
+        for i in range(iter_num):
+            LKD2response_text = LKD2completion_executor.execute(request_data)
+
+            output = LKD2response_text.replace(final_text, "").replace("상품", "")
+
+            st.write(output)
