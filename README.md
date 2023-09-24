@@ -1,4 +1,4 @@
-# made_copy_with_CLOVA
+# make_copy_with_CLOVA
 
 naver hyper clova API를 통해 광고카피를 생성합니다.
 
