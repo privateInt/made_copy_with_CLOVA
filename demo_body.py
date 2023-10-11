@@ -39,7 +39,7 @@ def make_body_copy_example():
     return example_lst
 
 LKD2completion_executor = LKD2CompletionExecutor(
-        host='clovastudio.apigw.ntruss.com',
+        host='host',
         api_key='api_key',
         api_key_primary_val = 'api_key_primary_val',
         request_id='request_id'
